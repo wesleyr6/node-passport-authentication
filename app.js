@@ -56,6 +56,11 @@ app.get('/', function(req, res) {
 	});
 });
 
+app.get('/logout', function(req, res) {
+	req.logout();
+	res.redirect('/');
+});
+
 app.post('/', passport.authenticate('local'), function(req, res) {
 	res.render('index', {
 		isAuthenticated: true
