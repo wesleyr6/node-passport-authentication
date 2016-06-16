@@ -36,8 +36,7 @@ passport.use(new passportLocal.Strategy(function(username, password, done) {
 		done(null, {
 			_id: 123,
 			name: username,
-			age: 23,
-			status: false
+			age: 23
 		});
 	} else {
 		done(null, null);
@@ -52,7 +51,8 @@ app.use(bodyParser.urlencoded({
 
 app.get('/', function(req, res) {
 	res.render('index', {
-		isAuthenticated: false
+		isAuthenticated: req.isAuthenticated(),
+		user: req.user
 	});
 });
 
