@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>myApp</title>
+
+	<!-- ANGULAR JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+</head>
+<body >
+	<% if (!isAuthenticated) { %>
+		<form action="/" method="POST">
+		    <label for="username">Username:</label>
+	        <input type="text" id="username" name="username">
+
+	        <label for="password">Password:</label>
+	        <input type="password" id="password" name="password">
+
+			<button>Enviar</button>
+		</form>
+	<% } else { %>
+		Hello!
+	<% } %>
+
+	<!-- <script src="static/js/login.js"></script> -->
+</body>
+</html>
