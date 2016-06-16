@@ -49,11 +49,25 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }));
 
+// Ensure authentications
+function ensureAuthentication(req, res, next) {
+	if (req.isAuthenticated()) {
+		next();
+	} else {
+		res.redirect('/');
+	}
+}
+
+// Routes
 app.get('/', function(req, res) {
 	res.render('index', {
 		isAuthenticated: req.isAuthenticated(),
 		user: req.user
 	});
+});
+
+app.get('/test', ensureAuthentication, function(req, res) {
+	res.send('Test Page');
 });
 
 app.get('/logout', function(req, res) {
@@ -64,6 +78,8 @@ app.get('/logout', function(req, res) {
 app.post('/', passport.authenticate('local'), function(req, res) {
 	res.render('index', {
 		isAuthenticated: true
+	}, function() {
+		res.redirect('/');
 	});
 });
 
