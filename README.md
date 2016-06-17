@@ -1,3 +1,5 @@
-# Basic test with Passport Authentication using MEAN Stack
+# Passport Authentication
+Authenticate basic test using MEAN Stack
+
 ## Running server
-nodemon run dev
+npm run dev
