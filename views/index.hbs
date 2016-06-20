@@ -1,0 +1,21 @@
+{{#unless isAuthenticated}}
+	<div id="box-login">
+		<form action="/" method="POST">
+			<fieldset>
+		    	<label for="username">Username:</label><br>
+	        	<input type="text" id="username" name="username">
+	        </fieldset>
+
+			<fieldset>
+	        	<label for="password">Password:</label><br>
+	        	<input type="password" id="password" name="password">
+	        </fieldset>
+
+			<div id="box-login-action">
+				<button>Enviar</button>
+			</div>
+		</form>
+	</div>
+{{else}}
+	<p>Hello {{user.name}}, you can do <a href="/logout">logout here</a></p>
+{{/unless}}

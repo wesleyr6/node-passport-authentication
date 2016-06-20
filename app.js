@@ -5,15 +5,19 @@ var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var routes = require('./routes/');
 var passport = require('passport');
+var exphbs  = require('express3-handlebars');
 
 // Configs
-app.set('view engine', 'ejs');
 app.use(cookieParser());
 app.use(expressSession({
 	secret: process.env.SESSION_SECRET || 'safadao',
 	resave: false,
 	saveUninitialized: false
 }));
+
+// Template engine
+app.engine('hbs', exphbs({extname:'hbs', defaultLayout:'main.hbs'}));
+app.set('view engine', 'hbs');
 
 // Views
 app.use('/views', express.static(__dirname + '/views'));

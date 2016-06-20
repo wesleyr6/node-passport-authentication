@@ -26,16 +26,13 @@ passport.use(new passportLocal.Strategy(function(username, password, done) {
 
 router.get('/', function(req, res) {
 	res.render('index', {
+		title: 'MyApp Home',
 		isAuthenticated: req.isAuthenticated(),
 		user: req.user
 	});
 });
 
 router.get('/test', ensureAuthentication, function(req, res) {
-	res.send('Test Page');
-});
-
-router.get('/teste32', ensureAuthentication, function(req, res) {
 	res.send('Test Page');
 });
 
