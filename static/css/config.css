@@ -9,10 +9,16 @@ html, body {
 }
 
 body {
-	background-color: #2B7797;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 10px;
+	color: #313131;
 	box-shadow: inset 0px 0px 178px 21px rgba(0,0,0,0.15);
+	background-color: #f1f1f1;
+}
+
+label, input, textarea, select, li {
+	color: #313131;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 p {

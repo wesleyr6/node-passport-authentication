@@ -2,18 +2,15 @@
 	<div id="box-login">
 		<form action="/" method="POST">
 			<fieldset>
-		    	<label for="username">Username:</label><br>
-	        	<input type="text" id="username" name="username">
-	        </fieldset>
-
-			<fieldset>
-	        	<label for="password">Password:</label><br>
-	        	<input type="password" id="password" name="password">
+	        	<input type="text" id="username" name="username" placeholder="username">
+	        	<input type="password" id="password" name="password" placeholder="password">
 	        </fieldset>
 
 			<div id="box-login-action">
-				<button>Login</button>
+				<button class="btn">Login</button>
 			</div>
+
+			<p>Don't have an account? <a href="/signup">Sign Up</a></p>
 		</form>
 	</div>
 {{else}}
