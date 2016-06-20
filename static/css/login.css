@@ -1,0 +1,48 @@
+#box-login {
+	width: 300px;
+	height: 200px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0 0 -150px;
+	z-index: 1;
+	background-color: #fff;
+	padding: 20px;
+	border: 1px solid #c9c9c9;
+	border-radius: 5px;
+	box-shadow: rgba(255, 255, 255, 0.35) 0px 0px 200px;
+}
+
+#box-login fieldset {
+	border: 0;
+}
+
+#box-login fieldset + fieldset {
+	margin-top: 15px;
+}
+
+#box-login fieldset label {
+	display: inline-block;
+	margin-bottom: 2px;
+	font-size: 1.4em;
+}
+
+#box-login fieldset input[type="text"],
+#box-login fieldset input[type="password"] {
+	padding: 8px 10px;
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-size: 1.5em;
+}
+
+#box-login #box-login-action {
+	margin-top: 15px;
+}
+
+#box-login #box-login-action button {
+	padding: 4px 15px;
+	cursor: pointer;
+}
