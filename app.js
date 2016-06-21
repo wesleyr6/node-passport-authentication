@@ -3,11 +3,15 @@ var app = express();
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
+var mongoose = require('mongoose');
+var config = require('./config');
 var routes = require('./routes/');
 var passport = require('passport');
-var exphbs  = require('express3-handlebars');
+var exphbs = require('express3-handlebars');
 
 // Configs
+mongoose.connect(config.database);
+app.set('superSecret', config.secret);
 app.use(cookieParser());
 app.use(expressSession({
 	secret: process.env.SESSION_SECRET || 'safadao',
@@ -16,7 +20,10 @@ app.use(expressSession({
 }));
 
 // Template engine
-app.engine('hbs', exphbs({extname:'hbs', defaultLayout:'main.hbs'}));
+app.engine('hbs', exphbs({
+	extname: 'hbs',
+	defaultLayout: 'main.hbs'
+}));
 app.set('view engine', 'hbs');
 
 // Views
