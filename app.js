@@ -29,7 +29,7 @@ app.use(expressSession({
 // Template engine
 app.engine('hbs', exphbs({
 	extname: 'hbs',
-	defaultLayout: 'main.hbs'
+	defaultLayout: 'unlogged/main.hbs'
 }));
 app.set('view engine', 'hbs');
 

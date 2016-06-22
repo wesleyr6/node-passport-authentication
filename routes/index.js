@@ -5,7 +5,7 @@ var passportLocal = require('passport-local');
 var User = require('../models/user');
 var bcrypt = require('bcrypt');
 
-// Ensure authentications
+/* Authentications config */
 function ensureAuthentication(req, res, next) {
 	if (req.isAuthenticated()) {
 		next();
@@ -38,16 +38,23 @@ passport.use(new passportLocal.Strategy(function(username, password, done) {
 	});
 }));
 
+/* Routes */
 router.get('/', function(req, res) {
 	res.render('index', {
 		title: 'Home - MyApp',
+		layout: req.isAuthenticated() ? 'logged/main.hbs' : 'unlogged/main.hbs',
+		bodyClass: req.isAuthenticated() ? 'logged' : 'unlogged',
 		isAuthenticated: req.isAuthenticated(),
 		user: req.user
 	});
 });
 
-router.get('/test', ensureAuthentication, function(req, res) {
-	res.send('Test Page');
+router.post('/', passport.authenticate('local'), function(req, res) {
+	res.render('index', {
+		isAuthenticated: true
+	}, function() {
+		res.redirect('/');
+	});
 });
 
 router.get('/logout', function(req, res) {
@@ -89,12 +96,8 @@ router.post('/signup', function(req, res) {
 	});
 });
 
-router.post('/', passport.authenticate('local'), function(req, res) {
-	res.render('index', {
-		isAuthenticated: true
-	}, function() {
-		res.redirect('/');
-	});
+router.get('/test', ensureAuthentication, function(req, res) {
+	res.send('Test Page');
 });
 
 module.exports = router;
