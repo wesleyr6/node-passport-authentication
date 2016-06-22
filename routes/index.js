@@ -72,7 +72,7 @@ router.post('/signup', function(req, res) {
 	var signupUser;
 
 	if (req.body.password !== req.body.passwordConfirm) {
-		throw 'Confirmação de senha incorreta';
+		throw 'Incorrect password confirmation';
 	}
 
 	bcrypt.genSalt(10, function(err, salt) {
