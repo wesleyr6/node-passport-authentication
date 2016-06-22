@@ -9,9 +9,16 @@ var routes = require('./routes/');
 var passport = require('passport');
 var exphbs = require('express3-handlebars');
 
-// Configs
-mongoose.connect(config.database);
+// MongoDb
 app.set('superSecret', config.secret);
+mongoose.connect(config.database, function(err) {
+	if (err) {
+		throw err;
+	}
+	console.log('MongoDB: Successfully connected');
+});
+
+// Configs
 app.use(cookieParser());
 app.use(expressSession({
 	secret: process.env.SESSION_SECRET || 'safadao',
