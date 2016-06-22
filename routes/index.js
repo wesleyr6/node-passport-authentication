@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var passportLocal = require('passport-local');
 var User = require('../models/user');
+var bcrypt = require('bcrypt');
 
 // Ensure authentications
 function ensureAuthentication(req, res, next) {
@@ -24,16 +25,15 @@ passport.use(new passportLocal.Strategy(function(username, password, done) {
 		if (!user) {
 			throw 'Authentication failed. User not found.';
 		} else if (user) {
-			// check if password matches
-			if (user.password !== password) {
-				throw 'Authentication failed. Wrong password.';
-			} else {
-				done(null, {
-					_id: 123,
-					name: username,
-					age: 23
-				});
-			}
+			bcrypt.compare(password, user.password, function(err, res) {
+				if (res) {
+					done(null, {
+						name: username
+					});
+				} else {
+					throw 'Authentication failed. Wrong password.';
+				}
+			});
 		}
 	});
 }));
@@ -62,24 +62,30 @@ router.get('/signup', function(req, res) {
 });
 
 router.post('/signup', function(req, res) {
+	var signupUser;
+
 	if (req.body.password !== req.body.passwordConfirm) {
 		throw 'Confirmação de senha incorreta';
 	}
 
-	var signupUser = new User({
-		name: req.body.username,
-		password: req.body.password,
-		admin: true
-	});
+	bcrypt.genSalt(10, function(err, salt) {
+		bcrypt.hash(req.body.password, salt, function(err, hash) {
+			signupUser = new User({
+				name: req.body.username,
+				password: hash,
+				securityPhrase: req.body.securityPhrase
+			});
 
-	signupUser.save(function(err) {
-		if (err) {
-			throw err;
-		}
+			signupUser.save(function(err) {
+				if (err) {
+					throw err;
+				}
 
-		console.log('User saved successfully');
+				console.log('SignUp: User saved successfully');
 
-		res.redirect('/');
+				res.redirect('/');
+			});
+		});
 	});
 });
 
