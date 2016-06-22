@@ -29,6 +29,6 @@
     "gulp": "^3.9.1"
   },
   "devDependencies": {
-    "express3-handlebars": "*",
+    "express3-handlebars": "*"
   }
 }
