@@ -8,8 +8,8 @@ Authentication basic test using using NodeJs, Express and MongoDB
 ```npm install```
 
 ## Install MongoDb
-https://www.mongodb.com/download-center?jmp=nav#community
-https://robomongo.org/
+* https://www.mongodb.com/download-center?jmp=nav#community
+* https://robomongo.org/
 
 ## Update database path
 Path: node-passport-authentication/config.js
