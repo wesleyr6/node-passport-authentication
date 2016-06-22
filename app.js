@@ -8,6 +8,7 @@ var config = require('./config');
 var routes = require('./routes/');
 var passport = require('passport');
 var exphbs = require('express3-handlebars');
+var logger = require('morgan');
 
 // MongoDb
 app.set('superSecret', config.secret);
@@ -19,6 +20,7 @@ mongoose.connect(config.database, function(err) {
 });
 
 // Configs
+app.use(logger('dev'));
 app.use(cookieParser());
 app.use(expressSession({
 	secret: process.env.SESSION_SECRET || 'safadao',
