@@ -1,5 +1,5 @@
 # Passport Authentication
-Authentication basic test using using NodeJs, Express and MongoDB. <br />
+Authentication basic test using NodeJs, Express and MongoDB. <br />
 System authentication: npm passport (oAuth 2.0)<br />
 Encrypted password: bcrypt
 
