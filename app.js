@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var config = require('./config');
 var routes = require('./routes/');
 var passport = require('passport');
-var exphbs = require('express3-handlebars');
+var exphbs = require('express-handlebars');
 var logger = require('morgan');
 
 // MongoDb

@@ -11,11 +11,6 @@
     "npm": ">=3.10.1"
   },
   "dependencies": {
-    "gulp-concat": "^2.3.3",
-    "gulp-jshint": "^1.7.1",
-    "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^1.5.2",
-    "gulp-clean": "^0.3.1",
   	"nodemon": "^1.9.2",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
@@ -25,10 +20,9 @@
     "mongoose": "^4.4.19",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "bcrypt": "*",
-    "gulp": "^3.9.1"
+    "bcrypt": "*"
   },
   "devDependencies": {
-    "express3-handlebars": "*"
+    "express-handlebars": "*"
   }
 }
