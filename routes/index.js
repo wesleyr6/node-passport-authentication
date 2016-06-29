@@ -49,13 +49,10 @@ router.get('/', function(req, res) {
 	});
 });
 
-router.post('/', passport.authenticate('local'), function(req, res) {
-	res.render('index', {
-		isAuthenticated: true
-	}, function() {
-		res.redirect('/');
-	});
-});
+router.post('/', passport.authenticate('local', {
+	successRedirect: '/',
+	failureRedirect: '/'
+}));
 
 router.get('/logout', function(req, res) {
 	req.logout();
