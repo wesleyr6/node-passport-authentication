@@ -40,13 +40,23 @@ passport.use(new passportLocal.Strategy(function(username, password, done) {
 
 /* Routes */
 router.get('/', function(req, res) {
-	res.render('index', {
-		title: 'Home - MyApp',
-		layout: req.isAuthenticated() ? 'logged/main.hbs' : 'unlogged/main.hbs',
-		bodyClass: req.isAuthenticated() ? 'logged' : 'unlogged',
-		isAuthenticated: req.isAuthenticated(),
-		user: req.user
-	});
+	var isAuth = req.isAuthenticated();
+
+	if (isAuth) {
+		res.render('logged/index', {
+			title: 'Home - MyApp',
+			layout: 'logged/main.hbs',
+			bodyClass: 'logged',
+			isAuthenticated: req.isAuthenticated(),
+			user: req.user
+		});
+	} else {
+		res.render('unlogged/account/login', {
+			title: 'Login - MyApp',
+			layout: 'unlogged/main.hbs',
+			bodyClass: 'unlogged'
+		});
+	}
 });
 
 router.post('/', passport.authenticate('local', {
@@ -60,7 +70,7 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/signup', function(req, res) {
-	res.render('signup', {
+	res.render('unlogged/account/signup', {
 		title: 'Sign Up - MyApp'
 	});
 });
