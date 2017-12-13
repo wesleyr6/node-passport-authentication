@@ -1,12 +1,9 @@
-const mongoose = require('mongoose');
-const config = require('../config');
+const mongoose = require("mongoose");
+const config = require("../config/keys");
 
-module.exports = (app) => {
-    app.set('superSecret', config.secret);
-    mongoose.connect(config.database, function(err) {
-        if (err) {
-            throw err;
-        }
-        console.log('MongoDB: Successfully connected');
-    });
-}
+mongoose.createConnection(config.database, function(err) {
+	if (err) {
+		throw err;
+	}
+	console.log("MongoDB: Successfully connected");
+});
