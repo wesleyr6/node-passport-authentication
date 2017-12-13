@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var passport = require('passport');
-var passportLocal = require('passport-local');
-var User = require('../models/user');
-var bcrypt = require('bcrypt');
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const passportLocal = require('passport-local');
+const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
 /* Authentications config */
 function ensureAuthentication(req, res, next) {
