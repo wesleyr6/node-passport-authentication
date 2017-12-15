@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const expressSession = require("express-session");
 const routes = require("./routes/");
 const logger = require("morgan");
 
@@ -13,13 +12,6 @@ require("./services/mongoose");
 // Configs
 app.use(logger("dev"));
 app.use(cookieParser());
-app.use(
-	expressSession({
-		secret: process.env.SESSION_SECRET || "safadao",
-		resave: false,
-		saveUninitialized: false
-	})
-);
 
 // Views
 app.use("/views", express.static(__dirname + "/views"));
